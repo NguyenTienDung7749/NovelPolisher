@@ -1,0 +1,22 @@
+# PDF Processing
+pypdf>=4.0.0
+
+# Document Export
+python-docx>=1.1.0
+
+# Gemini AI - Google AI Studio
+google-generativeai>=0.8.0
+
+# Gemini AI - Google Vertex AI
+google-cloud-aiplatform>=1.70.0
+vertexai>=1.70.0
+
+# Configuration
+python-dotenv>=1.0.0
+pyyaml>=6.0.0
+
+# Build
+pyinstaller>=6.0.0
+
+# Testing
+pytest>=8.0.0

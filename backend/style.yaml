@@ -1,0 +1,54 @@
+# Style Configuration for Novel Polishing
+# Optimized for "Tiêu Dao Tiểu Thư Sinh" (逍遥小书生) style
+
+tone: "co_trang_nhe_nhang"
+subgenre:
+  - "thu_sinh"      # Scholar/student theme
+  - "dien_van"      # Light romance
+  - "hai_huoc"      # Humor
+  - "thuong_nhat"   # Daily life/slice of life
+
+register: "tu_nhien_lich_su"  # Natural and polite
+
+avoid_modern_slang: true
+allow_light_humor: true
+keep_comedic_timing: true
+
+pronouns:
+  default_you: "ngươi"
+  respectful_you: "ngài"
+  male_to_male:
+    - "huynh"
+    - "đệ"
+  male_to_female:
+    - "cô nương"
+    - "tiểu thư"
+  female_to_male:
+    - "công tử"
+    - "đại nhân"
+
+titles_rules:
+  keep_titles_consistent: true
+  common_titles:
+    - "công tử"
+    - "cô nương"
+    - "lão gia"
+    - "phu nhân"
+    - "tiểu thư"
+    - "đại nhân"
+    - "huynh đài"
+    - "hiền đệ"
+
+language_rules:
+  - "Giữ văn phong cổ trang đời thường, không khoa trương kiếm hiệp."
+  - "Tránh slang hiện đại: ok, deadline, trend, drama, vibe, toxic..."
+  - "Ưu tiên câu gọn, mượt, tránh dịch sát và lặp từ."
+  - "Giữ nhịp hài nhẹ, không giải thích trò đùa."
+  - "Giữ cách gọi và nhịp thoại kiểu 'công tử – cô nương – lão gia', tránh chuyển sang 'anh – em' quá hiện đại trừ khi bối cảnh phù hợp."
+  - "Không thêm bớt tình tiết, không tóm tắt, không bình luận."
+  - "Giữ nguyên tên riêng và địa danh."
+
+punctuation:
+  preferred_quote_style: ""…""
+  ellipsis: "…"
+  dash: "—"

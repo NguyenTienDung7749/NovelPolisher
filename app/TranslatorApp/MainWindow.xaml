@@ -1,0 +1,511 @@
+﻿<Window x:Class="TranslatorApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:TranslatorApp.ViewModels"
+        Title="Novel Polisher - Cyberpunk Edition" 
+        Height="900" Width="1100"
+        MinHeight="750" MinWidth="950"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip">
+    
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="40" 
+                      ResizeBorderThickness="5" 
+                      CornerRadius="10" 
+                      GlassFrameThickness="0"/>
+    </WindowChrome.WindowChrome>
+    
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+    
+    <!-- Main Container Border for Corner Radius -->
+    <Border Background="{StaticResource BackgroundBrush}" 
+            CornerRadius="10" 
+            BorderBrush="#2A3546" 
+            BorderThickness="1">
+        
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- HEADER - Cyberpunk Style with Neon Glow -->
+        <Border Grid.Row="0" Margin="0,0,0,20" Padding="20,15" CornerRadius="10">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#151C28" Offset="0"/>
+                    <GradientStop Color="#1A2332" Offset="0.5"/>
+                    <GradientStop Color="#151C28" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.Effect>
+                <DropShadowEffect Color="#00F5FF" BlurRadius="20" ShadowDepth="0" Opacity="0.3"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0">
+                    <!-- Main Title with Gradient Effect -->
+                    <TextBlock FontSize="32" FontWeight="Bold" FontFamily="Segoe UI">
+                        <TextBlock.Foreground>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#00F5FF" Offset="0"/>
+                                <GradientStop Color="#FF00FF" Offset="0.5"/>
+                                <GradientStop Color="#00F5FF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TextBlock.Foreground>
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="#00F5FF" BlurRadius="15" ShadowDepth="0" Opacity="0.8"/>
+                        </TextBlock.Effect>
+                        ⚡ NOVEL POLISHER
+                    </TextBlock>
+                    <TextBlock Text="Làm mượt văn phong truyện tiếng Việt với AI Gemini" 
+                               FontSize="14" 
+                               Foreground="{StaticResource TextSecondaryBrush}"
+                               Margin="0,5,0,0"
+                               FontFamily="Segoe UI"/>
+                </StackPanel>
+                
+                <!-- Decorative Cyber Element & Window Controls -->
+                <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Border CornerRadius="5" Padding="12,6" Background="#1A2332" 
+                            BorderBrush="{StaticResource NeonCyanBrush}" BorderThickness="1"
+                            VerticalAlignment="Center" Margin="0,0,20,0">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#00F5FF" BlurRadius="8" ShadowDepth="0" Opacity="0.4"/>
+                        </Border.Effect>
+                        <TextBlock Text="🔮 DZUNGF POWERED" 
+                                   Foreground="{StaticResource NeonCyanBrush}" 
+                                   FontSize="11" FontWeight="Bold" FontFamily="Consolas"/>
+                    </Border>
+                    
+                    <!-- Window Controls -->
+                    <StackPanel Orientation="Horizontal" WindowChrome.IsHitTestVisibleInChrome="True">
+                        <Button Click="Minimize_Click" Width="35" Height="30" Background="Transparent" BorderThickness="0" Margin="0,0,5,0">
+                            <Path Data="M0,8 L10,8" Stroke="{StaticResource TextSecondaryBrush}" StrokeThickness="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" Value="#1A2332"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        
+                        <Button Click="Maximize_Click" Width="35" Height="30" Background="Transparent" BorderThickness="0" Margin="0,0,5,0">
+                            <Path Data="M2,2 L10,2 L10,10 L2,10 Z" Stroke="{StaticResource TextSecondaryBrush}" StrokeThickness="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                             <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" Value="#1A2332"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        
+                        <Button Click="Close_Click" Width="35" Height="30" Background="Transparent" BorderThickness="0">
+                            <Path Data="M2,2 L10,10 M10,2 L2,10" Stroke="{StaticResource TextSecondaryBrush}" StrokeThickness="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                             <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" Value="#FF3366"/>
+                                                        <Setter Property="Opacity" Value="0.8"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+        
+        <!-- MAIN CONTENT -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="380"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Left Panel - Settings (with scroll) -->
+            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto" Margin="0,0,15,0">
+                <StackPanel>
+                    
+                    <!-- Input/Output Section -->
+                    <GroupBox Header="📁 TỆP INPUT/OUTPUT">
+                        <StackPanel>
+                            <Label Content="File PDF đầu vào:"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding InputPath, UpdateSourceTrigger=PropertyChanged}" 
+                                         IsReadOnly="True"/>
+                                <Button Grid.Column="1" Content="BROWSE" 
+                                        Command="{Binding BrowseInputCommand}"
+                                        Style="{StaticResource SecondaryButtonStyle}"
+                                        Margin="10,0,0,0" Padding="15,8"/>
+                            </Grid>
+                            
+                            <Label Content="Thư mục output:" Margin="0,15,0,0"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding OutputDir, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Button Grid.Column="1" Content="BROWSE" 
+                                        Command="{Binding BrowseOutputCommand}"
+                                        Style="{StaticResource SecondaryButtonStyle}"
+                                        Margin="10,0,0,0" Padding="15,8"/>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                    
+                    <!-- AI Provider Section -->
+                    <GroupBox Header="🤖 AI PROVIDER">
+                        <StackPanel>
+                            <Label Content="Provider:"/>
+                            <ComboBox SelectedValue="{Binding Provider}" 
+                                      SelectedValuePath="Tag"
+                                      Margin="0,0,0,15">
+                                <ComboBoxItem Content="Google AI Studio" Tag="studio"/>
+                                <ComboBoxItem Content="Google Vertex AI" Tag="vertex"/>
+                            </ComboBox>
+                            
+                            <!-- AI Studio Options -->
+                            <StackPanel Visibility="{Binding IsStudioProvider, Converter={StaticResource BoolToVisibility}}">
+                                <Label Content="API Key:"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <PasswordBox x:Name="ApiKeyBox"
+                                                 PasswordChanged="ApiKeyBox_PasswordChanged"/>
+                                    <CheckBox Grid.Column="1" Content="Ghi nhớ" 
+                                              IsChecked="{Binding RememberApiKey}"
+                                              VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </Grid>
+                            </StackPanel>
+                            
+                            <!-- Vertex AI Options -->
+                            <StackPanel Visibility="{Binding IsVertexProvider, Converter={StaticResource BoolToVisibility}}">
+                                <Label Content="Project ID:"/>
+                                <TextBox Text="{Binding ProjectId, UpdateSourceTrigger=PropertyChanged}"/>
+                                
+                                <Label Content="Location:" Margin="0,10,0,0"/>
+                                <TextBox Text="{Binding Location, UpdateSourceTrigger=PropertyChanged}"/>
+                                
+                                <Label Content="Service Account JSON:" Margin="0,10,0,0"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Text="{Binding AuthFilePath, UpdateSourceTrigger=PropertyChanged}" 
+                                             IsReadOnly="True"/>
+                                    <Button Grid.Column="1" Content="BROWSE" 
+                                            Command="{Binding BrowseAuthFileCommand}"
+                                            Style="{StaticResource SecondaryButtonStyle}"
+                                            Margin="10,0,0,0" Padding="15,8"/>
+                                </Grid>
+                            </StackPanel>
+                            
+                            <Label Content="Model:" Margin="0,15,0,0"/>
+                            <ComboBox IsEditable="True"
+                                      ItemsSource="{Binding AvailableModels}"
+                                      Text="{Binding Model, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </GroupBox>
+                    
+                    <!-- Processing Options -->
+                    <GroupBox Header="⚙️ TÙY CHỌN XỬ LÝ">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,10,10">
+                                <Label Content="Chế độ:"/>
+                                <ComboBox SelectedValue="{Binding Mode}" SelectedValuePath="Tag">
+                                    <ComboBoxItem Content="Làm mượt tiếng Việt" Tag="polish_vi"/>
+                                    <ComboBoxItem Content="Dịch sang tiếng Anh" Tag="translate_en"/>
+                                </ComboBox>
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Row="0" Grid.Column="1" Margin="10,0,0,10">
+                                <Label Content="Định dạng xuất:"/>
+                                <ComboBox SelectedValue="{Binding ExportFormat}" SelectedValuePath="Tag">
+                                    <ComboBoxItem Content="DOCX (mặc định)" Tag="docx"/>
+                                    <ComboBoxItem Content="Markdown" Tag="md"/>
+                                    <ComboBoxItem Content="Tất cả" Tag="all"/>
+                                </ComboBox>
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,10,10">
+                                <Label Content="Trang bắt đầu:"/>
+                                <TextBox Text="{Binding StartPage, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Row="1" Grid.Column="1" Margin="10,0,0,10">
+                                <Label Content="Trang kết thúc (0 = hết):"/>
+                                <TextBox Text="{Binding EndPage, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,0,10,10">
+                                <Label Content="Max ký tự/chunk:"/>
+                                <TextBox Text="{Binding MaxChars, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Row="2" Grid.Column="1" Margin="10,0,0,10">
+                                <Label Content="Sleep (ms):"/>
+                                <TextBox Text="{Binding SleepMs, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Row="3" Grid.Column="0" Margin="0,0,10,0">
+                                <Label Content="Style file (tùy chọn):"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Text="{Binding StylePath}" IsReadOnly="True" FontSize="12"/>
+                                    <Button Grid.Column="1" Content="..." 
+                                            Command="{Binding BrowseStyleCommand}"
+                                            Padding="10,6" Margin="5,0,0,0"
+                                            Style="{StaticResource SecondaryButtonStyle}"/>
+                                </Grid>
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Row="3" Grid.Column="1" Margin="10,0,0,0">
+                                <Label Content="Glossary file (tùy chọn):"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Text="{Binding GlossaryPath}" IsReadOnly="True" FontSize="12"/>
+                                    <Button Grid.Column="1" Content="..." 
+                                            Command="{Binding BrowseGlossaryCommand}"
+                                            Padding="10,6" Margin="5,0,0,0"
+                                            Style="{StaticResource SecondaryButtonStyle}"/>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+                    
+                </StackPanel>
+            </ScrollViewer>
+            
+            <!-- Right Panel - Log (Cyberpunk Terminal Style) -->
+            <GroupBox Grid.Column="1" Header="📋 TERMINAL LOG">
+                <Border CornerRadius="6" Background="#0A0E14" BorderBrush="#1A2A3A" BorderThickness="1">
+                    <Grid>
+                        <!-- Scan line effect overlay -->
+                        <Border Opacity="0.03">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" SpreadMethod="Repeat">
+                                    <LinearGradientBrush.Transform>
+                                        <ScaleTransform ScaleY="0.02"/>
+                                    </LinearGradientBrush.Transform>
+                                    <GradientStop Color="Transparent" Offset="0"/>
+                                    <GradientStop Color="#00F5FF" Offset="0.5"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        
+                        <TextBox x:Name="LogTextBox"
+                                 Text="{Binding LogText, Mode=OneWay}" 
+                                 IsReadOnly="True"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 FontFamily="Consolas"
+                                 FontSize="12"
+                                 Background="Transparent"
+                                 Foreground="#00F5FF"
+                                 Padding="12"
+                                 BorderThickness="0"
+                                 TextChanged="LogTextBox_TextChanged"/>
+                    </Grid>
+                </Border>
+            </GroupBox>
+        </Grid>
+        
+        <!-- BOTTOM PANEL - Progress & Actions -->
+        <Border Grid.Row="2" CornerRadius="10" Padding="25,20" Margin="0,15,0,0"
+                BorderBrush="#2A3546" BorderThickness="1">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#151C28" Offset="0"/>
+                    <GradientStop Color="#1A2332" Offset="0.5"/>
+                    <GradientStop Color="#151C28" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.Effect>
+                <DropShadowEffect Color="#00F5FF" BlurRadius="15" ShadowDepth="0" Opacity="0.2"/>
+            </Border.Effect>
+            <StackPanel>
+                <!-- Progress Bar with Neon Effect -->
+                <Grid Margin="0,0,0,15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ProgressBar Value="{Binding Progress}" Maximum="100" Height="14"/>
+                    <Border Grid.Column="1" Margin="15,0,0,0" Padding="10,4" 
+                            Background="#1A2332" CornerRadius="4"
+                            BorderBrush="{StaticResource NeonCyanBrush}" BorderThickness="1">
+                        <TextBlock VerticalAlignment="Center" FontFamily="Consolas" FontWeight="Bold"
+                                   Foreground="{StaticResource NeonCyanBrush}">
+                            <Run Text="{Binding Progress}"/>
+                            <Run Text="%"/>
+                        </TextBlock>
+                    </Border>
+                </Grid>
+                
+                <TextBlock Text="{Binding StatusText}" 
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           Margin="0,0,0,18"
+                           FontFamily="Segoe UI"
+                           FontSize="13"/>
+                
+                <!-- Action Buttons with Neon Glow -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="▶ BẮT ĐẦU" 
+                            Command="{Binding StartCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Width="145" Margin="0,0,12,0"/>
+                    
+                    <Button Content="⏸ TẠM DỪNG" 
+                            Command="{Binding CancelCommand}"
+                            Style="{StaticResource DangerButtonStyle}"
+                            Width="145" Margin="0,0,12,0"/>
+                    
+                    <Button Content="🔄 TIẾP TỤC" 
+                            Command="{Binding ResumeCommand}"
+                            Style="{StaticResource SuccessButtonStyle}"
+                            Width="145" Margin="0,0,12,0"/>
+                    
+                    <Button Content="📂 MỞ OUTPUT" 
+                            Command="{Binding OpenOutputCommand}"
+                            Style="{StaticResource SecondaryButtonStyle}"
+                            Width="145"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        
+        <!-- FOOTER - Made By xDzungf Branding -->
+        <Border Grid.Row="3" Margin="0,15,0,0" Padding="15,10" CornerRadius="6">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#0F1621" Offset="0"/>
+                    <GradientStop Color="#151C28" Offset="0.5"/>
+                    <GradientStop Color="#0F1621" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Left decoration -->
+                <Border Grid.Column="0" Height="2" VerticalAlignment="Center" Margin="0,0,20,0" CornerRadius="1">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="Transparent" Offset="0"/>
+                            <GradientStop Color="#FF00FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                
+                <!-- Branding -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="⚡ Made By " 
+                               FontSize="13" 
+                               FontWeight="Medium"
+                               FontFamily="Segoe UI"
+                               Foreground="{StaticResource TextSecondaryBrush}"/>
+                    <TextBlock Text="xDzungf" 
+                               FontSize="14" 
+                               FontWeight="Bold"
+                               FontFamily="Consolas"
+                               Foreground="{StaticResource NeonMagentaBrush}">
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="#FF00FF" BlurRadius="10" ShadowDepth="0" Opacity="0.8"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <TextBlock Text=" ⚡" 
+                               FontSize="13" 
+                               FontWeight="Medium"
+                               FontFamily="Segoe UI"
+                               Foreground="{StaticResource TextSecondaryBrush}"/>
+                </StackPanel>
+                
+                <!-- Right decoration -->
+                <Border Grid.Column="2" Height="2" VerticalAlignment="Center" Margin="20,0,0,0" CornerRadius="1">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#FF00FF" Offset="0"/>
+                            <GradientStop Color="Transparent" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+    </Border>
+</Window>

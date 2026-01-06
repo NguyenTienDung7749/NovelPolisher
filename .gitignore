@@ -1,0 +1,107 @@
+# =============================================================================
+# NovelPolisher - .gitignore
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Python Backend
+# -----------------------------------------------------------------------------
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# PyInstaller build artifacts
+backend/build/
+backend/dist/
+
+# Environment files (may contain API keys)
+.env
+.env.local
+.env.*.local
+
+# Test outputs
+backend/test_output.txt
+backend/tests/__pycache__/
+
+# -----------------------------------------------------------------------------
+# C# / .NET WPF App
+# -----------------------------------------------------------------------------
+
+# Build outputs
+app/**/bin/
+app/**/obj/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# NuGet packages (restored on build)
+*.nupkg
+
+# -----------------------------------------------------------------------------
+# Output & Temporary Files
+# -----------------------------------------------------------------------------
+
+# Processing outputs (user data)
+out/
+output/
+**/checkpoint.json
+**/chunks/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# -----------------------------------------------------------------------------
+# Credentials & Secrets (IMPORTANT)
+# -----------------------------------------------------------------------------
+
+# Google Cloud Service Account files
+*-service-account.json
+*-credentials.json
+service-account*.json
+credentials*.json
+
+# API key files
+*.key
+secrets.json
+
+# -----------------------------------------------------------------------------
+# OS Generated Files
+# -----------------------------------------------------------------------------
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# -----------------------------------------------------------------------------
+# IDE & Editor
+# -----------------------------------------------------------------------------
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains
+*.iml
+
