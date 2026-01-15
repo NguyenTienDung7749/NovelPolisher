@@ -204,7 +204,7 @@ NovelPolisher/
 
 ## 📜 License
 
-No License 
+MIT License
 
 ## 🙏 Credits
 
